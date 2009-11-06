@@ -2,12 +2,13 @@ require 'helper'
 
 class TestSantizeCSS < Test::Unit::TestCase
   def setup
-    SanitizeCSS.allowed_selectors = %W( #home )
-    @css = %Q[#home { background-color: #000; } #post { color: #FFF }]
+    SanitizeCSS.allowed_selectors = %W( .post )
+    @css = File.read(File.join(File.dirname(__FILE__), 'test.css'))
   end
   
-  should "strip selector not whitelisted" do
+  should "only return rule with whitelisted selector" do
     @sanitized = SanitizeCSS.sanitize(@css)
-    assert_equal "#home { background-color: #000; }", @sanitized 
+    assert_equal ".post {\ncolor: #FFF;\n}\n", @sanitized
   end
+  
 end

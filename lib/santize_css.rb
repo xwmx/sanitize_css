@@ -1,3 +1,5 @@
+require 'css_parser'
+
 class SanitizeCSS
   @@allowed_selectors = []
   
@@ -14,7 +16,15 @@ class SanitizeCSS
   end
   
   def sanitize
-    @raw
+    source_parser = CssParser::Parser.new
+    dest_parser = CssParser::Parser.new
+    source_parser.add_block!(@raw)
+    source_parser.each_rule_set do |rs|
+      if rs.selectors.all? { |s| @@allowed_selectors.include?(s) }
+        dest_parser.add_rule_set!(rs)
+      end
+    end
+    dest_parser.to_s
   end
   
 end
