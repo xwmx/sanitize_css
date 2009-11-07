@@ -1,4 +1,4 @@
-# santize_css
+# SanitizeCSS
 
 Whitelist sanitization for css.
 

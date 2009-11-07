@@ -4,7 +4,7 @@ require 'rake'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
-    gem.name = "santize_css"
+    gem.name = "SanitizeCSS"
     gem.summary = %Q{Sanitize CSS using a white list}
     gem.description = %Q{Sanitize CSS using a white list}
     gem.email = "wmelody@gmail.com"

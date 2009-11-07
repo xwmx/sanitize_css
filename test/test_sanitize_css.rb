@@ -1,6 +1,6 @@
 require 'helper'
 
-class TestSantizeCSS < Test::Unit::TestCase
+class TestSanitizeCSS < Test::Unit::TestCase
   
   def setup
     SanitizeCSS.allowed_selectors = %W[
