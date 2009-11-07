@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["William Melody"]
   s.date = %q{2009-11-06}
-  s.description = %q{Sanitize CSS using a white list}
+  s.description = %q{CSS selector whitespace sanitization}
   s.email = %q{wmelody@gmail.com}
   s.extra_rdoc_files = [
     "LICENSE",
@@ -22,15 +22,17 @@ Gem::Specification.new do |s|
      "LICENSE",
      "README.markdown",
      "Rakefile",
+     "SanitizeCSS.gemspec",
      "VERSION",
-     "santize_css.gemspec",
-     "test/helper.rb"
+     "lib/sanitize_css.rb",
+     "test/helper.rb",
+     "test/test_sanitize_css.rb"
   ]
   s.homepage = %q{http://github.com/autodata/santize_css}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubygems_version = %q{1.3.5}
-  s.summary = %q{Sanitize CSS using a white list}
+  s.summary = %q{CSS selector whitespace sanitization}
   s.test_files = [
     "test/helper.rb",
      "test/test_sanitize_css.rb"

@@ -5,8 +5,8 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "SanitizeCSS"
-    gem.summary = %Q{Sanitize CSS using a white list}
-    gem.description = %Q{Sanitize CSS using a white list}
+    gem.summary = %Q{CSS selector whitespace sanitization}
+    gem.description = %Q{CSS selector whitespace sanitization}
     gem.email = "wmelody@gmail.com"
     gem.homepage = "http://github.com/autodata/santize_css"
     gem.authors = ["William Melody"]
