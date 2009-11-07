@@ -22,6 +22,10 @@ class TestSanitizeCSS < Test::Unit::TestCase
     assert_sanitized ".post{color:#FFF;}", ".post { color: #FFF; behavior: url(http://foo.com); }"
   end
   
+  should "only return rule with all selectors whitelisted" do
+    assert_sanitized ".post{color:#FFF;}", ".post .bad-selector { background-color: #000; } .post { color: #FFF }"
+  end
+  
   # From Rails
   should "sanitize div style expression" do
     assert_sanitized '', "width: expression(alert('XSS'));"
