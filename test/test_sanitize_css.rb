@@ -71,6 +71,10 @@ class TestSanitizeCSS < Test::Unit::TestCase
     assert_sanitized expected, raw
   end
   
+  should "recognize bad css comment" do
+    assert_sanitized ".good-selector { }", ".good-selector{ ba/* hack */r: x }"
+  end
+  
 protected
   
   def assert_sanitized(expected, input)
