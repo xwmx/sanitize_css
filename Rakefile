@@ -5,12 +5,14 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "santize_css"
-    gem.summary = %Q{TODO: one-line summary of your gem}
-    gem.description = %Q{TODO: longer description of your gem}
+    gem.summary = %Q{Sanitize CSS using a white list}
+    gem.description = %Q{Sanitize CSS using a white list}
     gem.email = "wmelody@gmail.com"
     gem.homepage = "http://github.com/autodata/santize_css"
     gem.authors = ["William Melody"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
+    gem.add_dependency "css_parser"
+    gem.add_dependency "action_controller"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 rescue LoadError
