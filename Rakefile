@@ -11,7 +11,6 @@ begin
     gem.homepage = "http://github.com/autodata/santize_css"
     gem.authors = ["William Melody"]
     gem.add_development_dependency "thoughtbot-shoulda", ">= 0"
-    gem.add_dependency "css_parser"
     gem.add_dependency "actionpack"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end

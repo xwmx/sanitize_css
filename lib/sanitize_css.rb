@@ -1,12 +1,17 @@
-require 'css_parser'
 require 'action_controller'
 
 class SanitizeCSS
-  @@allowed_selectors = []
+  
+  @@parser = defined?(PARSER) ? PARSER : 'CSSPool'
+  @@allowed_selectors = defined?(SELECTORS) ? SELECTORS : []
   @@white_list_sanitizer = HTML::WhiteListSanitizer.new
   
   def self.allowed_selectors=(selectors = [])
     @@allowed_selectors += selectors
+  end
+  
+  def self.parser=(parser)
+    @@parser = parser
   end
   
   def self.sanitize(raw)
@@ -15,21 +20,19 @@ class SanitizeCSS
   
   def initialize(raw)
     @raw = raw
+    
+    case @@parser
+    when 'CSSPool'
+      require 'sanitizers/csspool.rb'
+      class_eval { include CSSPoolSanitizer }
+    when 'CssParser'
+      require 'sanitizers/css_parser.rb'
+      class_eval { include CssParserSanitizer }
+    end
   end
   
   def sanitize
-    source_parser = CssParser::Parser.new
-    dest_parser = CssParser::Parser.new
-    
-    source_parser.add_block!(@raw)
-    
-    source_parser.each_rule_set do |rs|
-      if rs.selectors.all? { |s| @@allowed_selectors.include?(s) }
-        sanitized = @@white_list_sanitizer.sanitize_css(rs.declarations_to_s)
-        dest_parser.add_rule_set!(CssParser::RuleSet.new(rs.selectors.join(" "), sanitized))
-      end
-    end
-    dest_parser.to_s
+    parse_and_sanitize(@raw, @@white_list_sanitizer, @@allowed_selectors)
   end
   
 end

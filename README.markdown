@@ -2,6 +2,8 @@
 
 CSS selector whitespace sanitization. Specify allowed selectors and their declarations are whitelisted with ActionController's HTML::WhiteListSanitizer.
 
+This is mostly an experiment at this point. Relying on this for security is not recommended.
+
 ## Note on Patches/Pull Requests
  
 * Fork the project.
